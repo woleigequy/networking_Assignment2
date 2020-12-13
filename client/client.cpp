@@ -39,6 +39,8 @@ void strCharProcess(char *str) {
 	}
 }
 
+
+
 DWORD WINAPI send(LPVOID param) {
 	SOCKET connect_sock = *(SOCKET*)param;
 	char szBuff[buffSize]="";
