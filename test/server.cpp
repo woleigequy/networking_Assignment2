@@ -7,6 +7,8 @@
 // 4. recompile the source.
 
 //#include "stdafx.h"
+
+//#include <winsock.h>
 #include <winsock2.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -16,11 +18,19 @@
 #include<time.h>
 #include <conio.h>
 #include <iostream>
+#include <mysql.h>
 
 using namespace std;
 
+MYSQL mysql, * sql_sock;
+
+const char* sql_query;
+
+MYSQL_RES* result;
+MYSQL_ROW row;
+
 #define DEFAULT_PORT	5019
-#define buffSize 100
+#define buffSize 600
 
 typedef struct threadInfo {
 	SOCKET socket;
@@ -44,7 +54,7 @@ DWORD WINAPI send(LPVOID param1) {
 	SOCKET msg_sock = param.socket;
 	char szBuff[buffSize];
 	int msg_len;
-	strcpy(szBuff,"please input your neckname");
+	strcpy(szBuff,"please input your nickname");
 	msg_len = send(msg_sock, szBuff, sizeof(szBuff), 0);
 	if (msg_len == 0) {
 		printf("Client closed connection\n");
@@ -94,11 +104,11 @@ int recvProcess(char* strIn,int index) {
 	else if (strncmp(strIn, ").)! 004", 8)==0) {
 		string charTemp = strIn;
 		charTemp = charTemp.substr(8);
-		char* ch = &charTemp[0];
+		char* ch = &charTemp[0];			// message body
 		char resultChar[buffSize];
 		time_t t = time(NULL);
 		struct tm tblock = *localtime(&t);
-		char tchar[26]; 
+		char tchar[26];						// timestamp
 		asctime_s(tchar,sizeof(tchar),&tblock);
 		strcpy(resultChar, tchar);
 		strcat(resultChar,threadList[index].username);
@@ -106,11 +116,37 @@ int recvProcess(char* strIn,int index) {
 		strcat(resultChar, ch);
 		strcpy(threadList[index].msgTemp, resultChar);
 
+		sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
+
+		if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+		{
+			fprintf(stderr, "查询失败！\n");
+			exit(1);
+		}
+		else
+		{
+			if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+			{
+				fprintf(stderr, "保存结果集失败！\n");
+				exit(1);
+			}
+			else
+			{
+				while ((row = mysql_fetch_row(result)) != NULL) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+				{
+					printf("name is %s\t", row[0]);               //打印当前行的第一列的数据
+					printf("age is %s\t\n", row[1]);              //打印当前行的第二列的数据
+				}
+			}
+
+		}
+
+
 		for (int i = 0;i<threadCounter;i++) {
 			if (i==index) {
 				continue;
 			}
-			else if (threadList[index].roomNumber== threadList[i].roomNumber) {
+			else if (threadList[index].roomNumber == threadList[i].roomNumber) {
 				threadList[i].msgSource = index;
 				SetEvent(threadList[i].weakupSignal);
 			}
@@ -187,6 +223,56 @@ DWORD WINAPI autoSend(LPVOID param1) {
 
 
 int main(int argc, char** argv) {
+
+	const char* host = "127.0.0.1";  //因为是作为本机测试，所以填写的是本地IP
+	const char* user = "root";		  //这里改为你的用户名，即连接MySQL的用户名
+	const char* passwd = "0826"; //这里改为你的用户密码
+	const char* db = "networking";      //这里改为你要连接的数据库的名字
+	unsigned int port = 3306;           //这是MySQL的服务器的端口，如果你没有修改过的话就是3306。
+	const char* unix_socket = NULL;    //unix_socket这是unix下的，我在Windows下，所以就把它设置为NULL
+	unsigned long client_flag = 0;      //这个参数一般为0
+
+	//const char* sql_query = "select * from test"; //查询语句
+
+	//MYSQL_RES* result;                          //保存结果集的
+	//MYSQL_ROW row;                               //代表的是结果集中的一行
+
+	mysql_init(&mysql);                          //连接之前必须使用这个函数来初始化
+
+	if ((sql_sock = mysql_real_connect(&mysql, host, user, passwd, db, port, unix_socket, client_flag)) == NULL) //连接MySQL
+	{
+		printf("连接失败，原因是: \n");
+		fprintf(stderr, " %s\n", mysql_error(&mysql));
+		exit(1);
+	}
+	else
+	{
+		fprintf(stderr, "连接MySQL成功！！\n");
+	}
+
+	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	{
+		fprintf(stderr, "查询失败！\n");
+		exit(1);
+	}
+	else
+	{
+		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		{
+			fprintf(stderr, "保存结果集失败！\n");
+			exit(1);
+		}
+		else
+		{
+			while ((row = mysql_fetch_row(result)) != NULL) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			{
+				printf("name is %s\t", row[0]);               //打印当前行的第一列的数据
+				printf("age is %s\t\n", row[1]);              //打印当前行的第二列的数据
+			}
+		}
+
+	}
+	
 
 	char szBuff[buffSize];
 	int msg_len;
@@ -325,7 +411,10 @@ int main(int argc, char** argv) {
 	}
 	*/
 	
-	
+	mysql_free_result(result);                                //释放结果集
+	mysql_close(sql_sock);	                                      //关闭连接
+	system("pause");
+	exit(EXIT_SUCCESS);
 	//EnterCriticalSection();
 	//closesocket(msg_sock);
 	WSACleanup();

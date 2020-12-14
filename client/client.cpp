@@ -54,7 +54,7 @@ DWORD WINAPI send(LPVOID param) {
 				}
 				else if (state == 3) {
 					state -= 2;
-					printf("please input your neckname\n");
+					printf("please input your nickname\n");
 					continue;
 				}
 				else if (state == 4) {
@@ -131,7 +131,7 @@ int main(int argc, char** argv) {
 	unsigned short	port = DEFAULT_PORT;
 	unsigned int	addr;
 
-	/*
+	
 	if (argc != 3) {
 		printf("echoscln [server name] [port number]\n");
 		return -1;
@@ -140,9 +140,9 @@ int main(int argc, char** argv) {
 		server_name = argv[1];
 		port = atoi(argv[2]);
 	}
-	*/
-	server_name = "127.0.0.1";
-	port = 5019;
+	
+	//server_name = "127.0.0.1";
+	//port = 5019;
 	if (WSAStartup(0x202, &wsaData) == SOCKET_ERROR) {
 		// stderr: standard error are printed to the screen.
 		fprintf(stderr, "WSAStartup failed with error %d\n", WSAGetLastError());

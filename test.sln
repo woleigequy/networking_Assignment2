@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{13B14F03-93BC-4047-A83D-05809C97ECD1}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcxproj", "{56C05341-FFC0-4E0C-8541-DBE6FC91D899}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.vcxproj", "{9D726B70-83AD-493E-9B1D-35F7EFC5FE8D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "server", "test\test.vcxproj", "{13B14F03-93BC-4047-A83D-05809C97ECD1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mysql", "mysql\mysql.vcxproj", "{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +19,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Debug|Win32.ActiveCfg = Debug|Win32
-		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Debug|Win32.Build.0 = Debug|Win32
-		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Debug|x64.ActiveCfg = Debug|Win32
-		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Release|Win32.ActiveCfg = Release|Win32
-		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Release|Win32.Build.0 = Release|Win32
-		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Release|x64.ActiveCfg = Release|Win32
 		{56C05341-FFC0-4E0C-8541-DBE6FC91D899}.Debug|Win32.ActiveCfg = Debug|Win32
 		{56C05341-FFC0-4E0C-8541-DBE6FC91D899}.Debug|Win32.Build.0 = Debug|Win32
 		{56C05341-FFC0-4E0C-8541-DBE6FC91D899}.Debug|x64.ActiveCfg = Debug|Win32
@@ -37,6 +33,20 @@ Global
 		{9D726B70-83AD-493E-9B1D-35F7EFC5FE8D}.Release|Win32.Build.0 = Release|Win32
 		{9D726B70-83AD-493E-9B1D-35F7EFC5FE8D}.Release|x64.ActiveCfg = Release|x64
 		{9D726B70-83AD-493E-9B1D-35F7EFC5FE8D}.Release|x64.Build.0 = Release|x64
+		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Debug|Win32.Build.0 = Debug|Win32
+		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Debug|x64.ActiveCfg = Debug|Win32
+		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Release|Win32.ActiveCfg = Release|Win32
+		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Release|Win32.Build.0 = Release|Win32
+		{13B14F03-93BC-4047-A83D-05809C97ECD1}.Release|x64.ActiveCfg = Release|Win32
+		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Debug|Win32.Build.0 = Debug|Win32
+		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Debug|x64.ActiveCfg = Debug|x64
+		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Debug|x64.Build.0 = Debug|x64
+		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Release|Win32.ActiveCfg = Release|Win32
+		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Release|Win32.Build.0 = Release|Win32
+		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Release|x64.ActiveCfg = Release|x64
+		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
