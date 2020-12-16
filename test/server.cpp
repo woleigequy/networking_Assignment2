@@ -116,15 +116,62 @@ int recvProcess(char* strIn,int index) {
 		strcat(resultChar, ch);
 		strcpy(threadList[index].msgTemp, resultChar);
 
-		sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
+		
+		char sql_query[999];
+
+		// insert sql_query
+		strcpy(sql_query, "INSERT INTO messages (sender, room_number, msg_date, msg_time, content) VALUES (");
+		strcat(sql_query, "'");
+		//username
+		strcat(sql_query, threadList[index].username);
+		strcat(sql_query, "', '");
+		//room number
+		string strTmp = to_string(threadList[index].roomNumber);
+		strcat(sql_query, &strTmp[0]);
+		strcat(sql_query, "', '");
+		//date
+		strTmp = to_string(tblock.tm_year + 1900);
+		strcat(sql_query, &strTmp[0]);
+		strcat(sql_query,"-");
+		strTmp = to_string(tblock.tm_mon+1);
+		strcat(sql_query, &strTmp[0]);
+		strcat(sql_query, "-");
+		strTmp = to_string(tblock.tm_mday);
+		strcat(sql_query, &strTmp[0]);
+		strcat(sql_query, "', '");
+		//time
+		strTmp = to_string(tblock.tm_hour);
+		strcat(sql_query, &strTmp[0]);
+		strcat(sql_query, ":");
+		strTmp = to_string(tblock.tm_min);
+		strcat(sql_query, &strTmp[0]);
+		strcat(sql_query, ":");
+		strTmp = to_string(tblock.tm_sec);
+		strcat(sql_query, &strTmp[0]);
+
+
+		// 拼个时间
+		//content
+		strcat(sql_query, "', '");
+		strcat(sql_query, ch);
+		strcat(sql_query, "')");
+		
+		// print sql_query
+		printf(sql_query);
+		printf("\n");
+
+		//strcat(sql_query, );
+		//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
 
 		if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
 		{
-			fprintf(stderr, "查询失败！\n");
+			fprintf(stderr, "插入失败！\n");
 			exit(1);
 		}
 		else
 		{
+			printf("Success!!!!!!\n");
+			/*
 			if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
 			{
 				fprintf(stderr, "保存结果集失败！\n");
@@ -138,9 +185,10 @@ int recvProcess(char* strIn,int index) {
 					printf("age is %s\t\n", row[1]);              //打印当前行的第二列的数据
 				}
 			}
+			*/
 
 		}
-
+		
 
 		for (int i = 0;i<threadCounter;i++) {
 			if (i==index) {
@@ -191,7 +239,6 @@ DWORD WINAPI recv(LPVOID param1) {
 
 
 
-
 /*
 DWORD WINAPI autoSend(LPVOID param1) {
 	struct threadParam param = *(threadParam*)param1;
@@ -220,10 +267,317 @@ DWORD WINAPI autoSend(LPVOID param1) {
 
 */
 
+void searchByName(char* name){
+
+	char sql_query[999];
+
+	// select sql_query
+	strcpy(sql_query, "SELECT * FROM messages WHERE sender = '");
+	strcat(sql_query, name);
+	strcat(sql_query,"'");
+	// print sql_query
+	printf(sql_query);
+	printf("\n");
+
+	//strcat(sql_query, );
+	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
+
+	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	{
+		fprintf(stderr, "插入失败！\n");
+		exit(1);
+	}
+	else
+	{
+		printf("Success!!!!!!\n");
+		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		{
+			fprintf(stderr, "保存结果集失败！\n");
+			exit(1);
+		}
+		else
+		{
+			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			{
+				for (int t = 0; t < mysql_num_fields(result); t++)
+				{
+					printf("%s\t", row[t]);
+				}
+				printf("\n");
+			}
+		}
+
+		mysql_free_result(result);
+
+	}
+}
+
+void searchByContentKeyword(char* keyword) {
+
+	char sql_query[999];
+
+	// select sql_query
+	strcpy(sql_query, "SELECT * FROM messages WHERE content LIKE '%");
+	strcat(sql_query, keyword);
+	strcat(sql_query, "%'");
+	// print sql_query
+	printf(sql_query);
+	printf("\n");
+
+	//strcat(sql_query, );
+	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
+
+	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	{
+		fprintf(stderr, "插入失败！\n");
+		exit(1);
+	}
+	else
+	{
+		printf("Success!!!!!!\n");
+		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		{
+			fprintf(stderr, "保存结果集失败！\n");
+			exit(1);
+		}
+		else
+		{
+			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			{
+				for (int t = 0; t < mysql_num_fields(result); t++)
+				{
+					printf("%s\t", row[t]);
+				}
+				printf("\n");
+			}
+		}
+
+		mysql_free_result(result);
+
+	}
+}
+
+void searchBySenderKeyword(char* keyword) {
+
+	char sql_query[999];
+
+	// select sql_query
+	strcpy(sql_query, "SELECT * FROM messages WHERE sender LIKE '%");
+	strcat(sql_query, keyword);
+	strcat(sql_query, "%'");
+	// print sql_query
+	printf(sql_query);
+	printf("\n");
+
+	//strcat(sql_query, );
+	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
+
+	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	{
+		fprintf(stderr, "插入失败！\n");
+		exit(1);
+	}
+	else
+	{
+		printf("Success!!!!!!\n");
+		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		{
+			fprintf(stderr, "保存结果集失败！\n");
+			exit(1);
+		}
+		else
+		{
+			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			{
+				for (int t = 0; t < mysql_num_fields(result); t++)
+				{
+					printf("%s\t", row[t]);
+				}
+				printf("\n");
+			}
+		}
+
+		mysql_free_result(result);
+
+	}
+}
+
+void searchByRoomNumber(int n) {
+
+	char sql_query[999];
+	
+	// select sql_query
+	strcpy(sql_query, "SELECT * FROM messages WHERE room_number = ");
+	string strTmp = to_string(n);
+	strcat(sql_query, &strTmp[0]);
+	//strcat(sql_query, n);
+	//strcat(sql_query, "'");
+	// print sql_query
+	printf(sql_query);
+	printf("\n");
+
+	//strcat(sql_query, );
+	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
+
+	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	{
+		fprintf(stderr, "插入失败！\n");
+		exit(1);
+	}
+	else
+	{
+		printf("Success!!!!!!\n");
+		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		{
+			fprintf(stderr, "保存结果集失败！\n");
+			exit(1);
+		}
+		else
+		{
+			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			{
+				for (int t = 0; t < mysql_num_fields(result); t++)
+				{
+					printf("%s\t", row[t]);
+				}
+				printf("\n");
+			}
+		}
+
+		mysql_free_result(result);
+
+	}
+}
+
+void searchByDate(char* date) {
+
+	printf("Please input the date in format yyyy-mm-dd");
+
+	char sql_query[999];
+
+	// select sql_query
+	strcpy(sql_query, "SELECT * FROM messages WHERE msg_date = '");
+	strcat(sql_query, date);
+	strcat(sql_query, "'");
+	// print sql_query
+	printf(sql_query);
+	printf("\n");
+
+	//strcat(sql_query, );
+	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
+
+	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	{
+		fprintf(stderr, "插入失败！\n");
+		exit(1);
+	}
+	else
+	{
+		printf("Success!!!!!!\n");
+		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		{
+			fprintf(stderr, "保存结果集失败！\n");
+			exit(1);
+		}
+		else
+		{
+			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			{
+				for (int t = 0; t < mysql_num_fields(result); t++)
+				{
+					printf("%s\t", row[t]);
+				}
+				printf("\n");
+			}
+		}
+
+		mysql_free_result(result);
+
+	}
+}
+
+/*
+void searchByPeriod(char* startDate, char* endDate) {
+
+	printf("Please input the date in format yyyy-mm-dd");
+
+	char sql_query[999];
+
+	// select sql_query
+	strcpy(sql_query, "SELECT * FROM messages WHERE msg_date = '");
+	strcat(sql_query, date);
+	strcat(sql_query, "'");
+	// print sql_query
+	printf(sql_query);
+	printf("\n");
+
+	//strcat(sql_query, );
+	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
+
+	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	{
+		fprintf(stderr, "插入失败！\n");
+		exit(1);
+	}
+	else
+	{
+		printf("Success!!!!!!\n");
+		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		{
+			fprintf(stderr, "保存结果集失败！\n");
+			exit(1);
+		}
+		else
+		{
+			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			{
+				for (int t = 0; t < mysql_num_fields(result); t++)
+				{
+					printf("%s\t", row[t]);
+				}
+				printf("\n");
+			}
+		}
+
+		mysql_free_result(result);
+
+	}
+}
+*/
+
+
+DWORD WINAPI historySearch(LPVOID param1) {
+	int state = 0;
+	char szBuff[buffSize]="";
+	while (true) {
+		if (kbhit()) {
+			gets_s(szBuff);
+			searchByName("Aries");
+			printf("-----------------------------------------------------------------");
+			printf("-----------------------------------------------------------------");
+			searchByDate("2020-12-15");
+			printf("-----------------------------------------------------------------");
+			printf("-----------------------------------------------------------------");
+			searchByRoomNumber(10);
+			printf("-----------------------------------------------------------------");
+			printf("-----------------------------------------------------------------");
+			searchBySenderKeyword("ri");
+			printf("-----------------------------------------------------------------");
+			printf("-----------------------------------------------------------------");
+			searchByContentKeyword("feelings");
+		}
+	}
+	
+}
+
+
+
+
+
 
 
 int main(int argc, char** argv) {
-
+	
 	const char* host = "127.0.0.1";  //因为是作为本机测试，所以填写的是本地IP
 	const char* user = "root";		  //这里改为你的用户名，即连接MySQL的用户名
 	const char* passwd = "0826"; //这里改为你的用户密码
@@ -249,8 +603,8 @@ int main(int argc, char** argv) {
 	{
 		fprintf(stderr, "连接MySQL成功！！\n");
 	}
-
-	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	
+	/*if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
 	{
 		fprintf(stderr, "查询失败！\n");
 		exit(1);
@@ -271,7 +625,7 @@ int main(int argc, char** argv) {
 			}
 		}
 
-	}
+	}*/
 	
 
 	char szBuff[buffSize];
@@ -311,6 +665,11 @@ int main(int argc, char** argv) {
 
 	//waiting for the connections
 
+
+	HANDLE history = CreateThread(NULL,0,historySearch,&threadList[threadCounter],0,NULL);
+
+
+
 	while (true) {
 		if (listen(sock, 5) == SOCKET_ERROR) {
 			fprintf(stderr, "listen() failed with error %d\n", WSAGetLastError());
@@ -335,7 +694,7 @@ int main(int argc, char** argv) {
 
 		threadList[threadCounter].socket = msg_sock;
 		threadList[threadCounter].sockaddr = client_addr;
-		HANDLE sendTid, autoTid;
+		//HANDLE sendTid, autoTid;
 		threadList[threadCounter].send = CreateThread(NULL, 0, send, &threadList[threadCounter], 0, NULL);
 		threadList[threadCounter].rec = CreateThread(NULL, 0, recv, &threadList[threadCounter], 0, NULL);
 		threadList[threadCounter].weakupSignal = CreateEvent(NULL,FALSE,FALSE,NULL);
@@ -411,7 +770,7 @@ int main(int argc, char** argv) {
 	}
 	*/
 	
-	mysql_free_result(result);                                //释放结果集
+	//mysql_free_result(result);                                //释放结果集
 	mysql_close(sql_sock);	                                      //关闭连接
 	system("pause");
 	exit(EXIT_SUCCESS);

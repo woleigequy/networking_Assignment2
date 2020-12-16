@@ -9,7 +9,7 @@
 
 
 #define DEFAULT_PORT	5019
-#define buffSize 100
+#define buffSize 600
 
 int state = 1;
 
@@ -88,7 +88,7 @@ DWORD WINAPI send(LPVOID param) {
 
 DWORD WINAPI rec(LPVOID param) {
 	SOCKET connect_sock = *(SOCKET*)param;
-	char szBuff[100];
+	char szBuff[buffSize];
 	int msg_len;
 	while (szBuff != "\\exit") {
 		msg_len = recv(connect_sock, szBuff, sizeof(szBuff), 0);
@@ -106,7 +106,7 @@ DWORD WINAPI rec(LPVOID param) {
 			return -1;
 		}
 
-		printf("%s.\n", szBuff);
+		printf("%s\n", szBuff);
 		if (strcmp(szBuff, "\\exit") == 0)break;
 	}
 	//printf("2");
