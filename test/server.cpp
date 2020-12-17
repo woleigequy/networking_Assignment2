@@ -14,8 +14,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <string>
-#include<Windows.h>
-#include<time.h>
+#include <windows.h>
+#include <time.h>
 #include <conio.h>
 #include <iostream>
 #include <mysql.h>
@@ -97,6 +97,9 @@ int recvProcess(char* strIn,int index) {
 		charTemp = charTemp.substr(8);
 		char* ch = &charTemp[0];
 		threadList[index].roomNumber = atoi(ch);
+		if (threadList[index].roomNumber==0) {
+			return 0;
+		}
 		strcpy(threadList[index].msgTemp, "you can chat now and input \"\\exit\" you can leave the room");
 		threadList[index].msgSource = index;
 		SetEvent(threadList[index].weakupSignal);
@@ -120,7 +123,7 @@ int recvProcess(char* strIn,int index) {
 		char sql_query[999];
 
 		// insert sql_query
-		strcpy(sql_query, "INSERT INTO messages (sender, room_number, msg_date, msg_time, content) VALUES (");
+		strcpy(sql_query, "INSERT INTO messages_server (sender, room_number, msg_date, msg_time, content) VALUES (");
 		strcat(sql_query, "'");
 		//username
 		strcat(sql_query, threadList[index].username);
@@ -149,8 +152,6 @@ int recvProcess(char* strIn,int index) {
 		strTmp = to_string(tblock.tm_sec);
 		strcat(sql_query, &strTmp[0]);
 
-
-		// 拼个时间
 		//content
 		strcat(sql_query, "', '");
 		strcat(sql_query, ch);
@@ -272,7 +273,7 @@ void searchByName(char* name){
 	char sql_query[999];
 
 	// select sql_query
-	strcpy(sql_query, "SELECT * FROM messages WHERE sender = '");
+	strcpy(sql_query, "SELECT * FROM messages_server WHERE sender = '");
 	strcat(sql_query, name);
 	strcat(sql_query,"'");
 	// print sql_query
@@ -317,7 +318,7 @@ void searchByContentKeyword(char* keyword) {
 	char sql_query[999];
 
 	// select sql_query
-	strcpy(sql_query, "SELECT * FROM messages WHERE content LIKE '%");
+	strcpy(sql_query, "SELECT * FROM messages_server WHERE content LIKE '%");
 	strcat(sql_query, keyword);
 	strcat(sql_query, "%'");
 	// print sql_query
@@ -362,7 +363,7 @@ void searchBySenderKeyword(char* keyword) {
 	char sql_query[999];
 
 	// select sql_query
-	strcpy(sql_query, "SELECT * FROM messages WHERE sender LIKE '%");
+	strcpy(sql_query, "SELECT * FROM messages_server WHERE sender LIKE '%");
 	strcat(sql_query, keyword);
 	strcat(sql_query, "%'");
 	// print sql_query
@@ -407,7 +408,7 @@ void searchByRoomNumber(int n) {
 	char sql_query[999];
 	
 	// select sql_query
-	strcpy(sql_query, "SELECT * FROM messages WHERE room_number = ");
+	strcpy(sql_query, "SELECT * FROM messages_server WHERE room_number = ");
 	string strTmp = to_string(n);
 	strcat(sql_query, &strTmp[0]);
 	//strcat(sql_query, n);
@@ -456,7 +457,7 @@ void searchByDate(char* date) {
 	char sql_query[999];
 
 	// select sql_query
-	strcpy(sql_query, "SELECT * FROM messages WHERE msg_date = '");
+	strcpy(sql_query, "SELECT * FROM messages_server WHERE msg_date = '");
 	strcat(sql_query, date);
 	strcat(sql_query, "'");
 	// print sql_query
@@ -496,16 +497,17 @@ void searchByDate(char* date) {
 	}
 }
 
-/*
-void searchByPeriod(char* startDate, char* endDate) {
+void searchByDatePeriod(char* startDate, char* endDate) {
 
 	printf("Please input the date in format yyyy-mm-dd");
 
 	char sql_query[999];
 
 	// select sql_query
-	strcpy(sql_query, "SELECT * FROM messages WHERE msg_date = '");
-	strcat(sql_query, date);
+	strcpy(sql_query, "SELECT * FROM messages_server WHERE msg_date >= '");
+	strcat(sql_query, startDate);
+	strcat(sql_query, " and msg_date <= ");
+	strcat(sql_query, endDate);
 	strcat(sql_query, "'");
 	// print sql_query
 	printf(sql_query);
@@ -517,7 +519,7 @@ void searchByPeriod(char* startDate, char* endDate) {
 	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
 	{
 		fprintf(stderr, "插入失败！\n");
-		exit(1);
+		return;
 	}
 	else
 	{
@@ -525,7 +527,7 @@ void searchByPeriod(char* startDate, char* endDate) {
 		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
 		{
 			fprintf(stderr, "保存结果集失败！\n");
-			exit(1);
+			return;
 		}
 		else
 		{
@@ -543,16 +545,127 @@ void searchByPeriod(char* startDate, char* endDate) {
 
 	}
 }
-*/
 
 
 DWORD WINAPI historySearch(LPVOID param1) {
 	int state = 0;
-	char szBuff[buffSize]="";
+	char szBuff[buffSize] = "";
+	char result[100] = "";
+	int rnum = 0;
+	char startDate[100], endDate[100];
 	while (true) {
 		if (kbhit()) {
 			gets_s(szBuff);
-			searchByName("Aries");
+			if (strcmp(szBuff, "\\history") == 0) {
+				int mode = 0;
+				printf("please choose your search method\n\"1\" search by Nickname\n\"2\" search by date\n\"3\" search by roomnumber\n\"4\" search by Nickname keyword\n\"5\" search by content keyword\n\"6\" search by date period\n");
+				scanf_s("%d", &mode);
+				switch (mode) {
+				case 1:
+					printf("please input entire nickname:\n");
+					while (true) {
+						if (kbhit()) {
+							gets_s(szBuff);
+							break;
+						}
+					}
+					gets_s(szBuff);
+					searchByName(szBuff);
+					break;
+				case 2:
+					printf("please input which year:\n");
+					while (true) {
+						if (kbhit()) {
+							gets_s(szBuff);
+							break;
+						}
+					}
+					gets_s(result);
+					strcat(result, "-");
+					printf("please input which month:\n");
+					gets_s(szBuff);
+					strcat(result, szBuff);
+					strcat(result, "-");
+					printf("please input which day:\n");
+					gets_s(szBuff);
+					strcat(result, szBuff);
+					searchByDate(result);
+					break;
+				case 3:
+					printf("please input roomnumber:\n");
+					while (true) {
+						if (kbhit()) {
+							gets_s(szBuff);
+							break;
+						}
+					}
+					scanf_s("%d", &rnum);
+					searchByRoomNumber(rnum);
+					break;
+				case 4:
+					printf("please input nickname keyword:\n");
+					while (true) {
+						if (kbhit()) {
+							gets_s(szBuff);
+							break;
+						}
+					}
+					gets_s(szBuff);
+					searchBySenderKeyword(szBuff);
+					break;
+				case 5:
+					printf("please input content keyword:\n");
+					while (true) {
+						if (kbhit()) {
+							gets_s(szBuff);
+							break;
+						}
+					}
+					gets_s(szBuff);
+					searchByContentKeyword(szBuff);
+					break;
+				case 6:
+					printf("from:\nplease input which year:\n");
+					while (true) {
+						if (kbhit()) {
+							gets_s(szBuff);
+							break;
+						}
+					}
+					gets_s(result);
+					strcat(result, "-");
+					printf("please input which month:\n");
+					gets_s(szBuff);
+					strcat(result, szBuff);
+					strcat(result, "-");
+					printf("please input which day:\n");
+					gets_s(szBuff);
+					strcat(result, szBuff);
+					strcpy(startDate,result);
+
+
+					printf("to:\nplease input which year:\n");
+					gets_s(result);
+					strcat(result, "-");
+					printf("please input which month:\n");
+					gets_s(szBuff);
+					strcat(result, szBuff);
+					strcat(result, "-");
+					printf("please input which day:\n");
+					gets_s(szBuff);
+					strcat(result, szBuff);
+					strcpy(endDate, result);
+
+					searchByDatePeriod(startDate,endDate);
+					break;
+				default:
+					break;
+				}
+			}
+			else {
+				printf("please input \"\\history\" to get in history search function!\n");
+			}
+			/*searchByName("Aries");
 			printf("-----------------------------------------------------------------");
 			printf("-----------------------------------------------------------------");
 			searchByDate("2020-12-15");
@@ -564,9 +677,10 @@ DWORD WINAPI historySearch(LPVOID param1) {
 			searchBySenderKeyword("ri");
 			printf("-----------------------------------------------------------------");
 			printf("-----------------------------------------------------------------");
-			searchByContentKeyword("feelings");
+			searchByContentKeyword("feelings");*/
 		}
 	}
+
 	
 }
 
@@ -578,20 +692,15 @@ DWORD WINAPI historySearch(LPVOID param1) {
 
 int main(int argc, char** argv) {
 	
-	const char* host = "127.0.0.1";  //因为是作为本机测试，所以填写的是本地IP
-	const char* user = "root";		  //这里改为你的用户名，即连接MySQL的用户名
-	const char* passwd = "0826"; //这里改为你的用户密码
-	const char* db = "networking";      //这里改为你要连接的数据库的名字
-	unsigned int port = 3306;           //这是MySQL的服务器的端口，如果你没有修改过的话就是3306。
-	const char* unix_socket = NULL;    //unix_socket这是unix下的，我在Windows下，所以就把它设置为NULL
-	unsigned long client_flag = 0;      //这个参数一般为0
+	const char* host = "127.0.0.1";
+	const char* user = "root";
+	const char* passwd = "0826";
+	const char* db = "networking";
+	unsigned int port = 3306;
+	const char* unix_socket = NULL;
+	unsigned long client_flag = 0;
 
-	//const char* sql_query = "select * from test"; //查询语句
-
-	//MYSQL_RES* result;                          //保存结果集的
-	//MYSQL_ROW row;                               //代表的是结果集中的一行
-
-	mysql_init(&mysql);                          //连接之前必须使用这个函数来初始化
+	mysql_init(&mysql);
 
 	if ((sql_sock = mysql_real_connect(&mysql, host, user, passwd, db, port, unix_socket, client_flag)) == NULL) //连接MySQL
 	{
@@ -603,29 +712,6 @@ int main(int argc, char** argv) {
 	{
 		fprintf(stderr, "连接MySQL成功！！\n");
 	}
-	
-	/*if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
-	{
-		fprintf(stderr, "查询失败！\n");
-		exit(1);
-	}
-	else
-	{
-		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
-		{
-			fprintf(stderr, "保存结果集失败！\n");
-			exit(1);
-		}
-		else
-		{
-			while ((row = mysql_fetch_row(result)) != NULL) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
-			{
-				printf("name is %s\t", row[0]);               //打印当前行的第一列的数据
-				printf("age is %s\t\n", row[1]);              //打印当前行的第二列的数据
-			}
-		}
-
-	}*/
 	
 
 	char szBuff[buffSize];

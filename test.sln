@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "server", "test\test.vcxproj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mysql", "mysql\mysql.vcxproj", "{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleApplication3", "ConsoleApplication3\ConsoleApplication3.vcxproj", "{F6042E79-4498-4284-ADBF-A411A8DE6CE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -47,6 +49,14 @@ Global
 		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Release|Win32.Build.0 = Release|Win32
 		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Release|x64.ActiveCfg = Release|x64
 		{EEFF00D5-7D30-412E-ABDD-CCC88D64A8DA}.Release|x64.Build.0 = Release|x64
+		{F6042E79-4498-4284-ADBF-A411A8DE6CE6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F6042E79-4498-4284-ADBF-A411A8DE6CE6}.Debug|Win32.Build.0 = Debug|Win32
+		{F6042E79-4498-4284-ADBF-A411A8DE6CE6}.Debug|x64.ActiveCfg = Debug|x64
+		{F6042E79-4498-4284-ADBF-A411A8DE6CE6}.Debug|x64.Build.0 = Debug|x64
+		{F6042E79-4498-4284-ADBF-A411A8DE6CE6}.Release|Win32.ActiveCfg = Release|Win32
+		{F6042E79-4498-4284-ADBF-A411A8DE6CE6}.Release|Win32.Build.0 = Release|Win32
+		{F6042E79-4498-4284-ADBF-A411A8DE6CE6}.Release|x64.ActiveCfg = Release|x64
+		{F6042E79-4498-4284-ADBF-A411A8DE6CE6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
