@@ -164,29 +164,14 @@ int recvProcess(char* strIn,int index) {
 		//strcat(sql_query, );
 		//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
 
-		if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+		if (mysql_query(&mysql, sql_query) != 0)       
 		{
-			fprintf(stderr, "插入失败！\n");
+			fprintf(stderr, "insert failure！\n");
 			exit(1);
 		}
 		else
 		{
-			printf("Success!!!!!!\n");
-			/*
-			if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
-			{
-				fprintf(stderr, "保存结果集失败！\n");
-				exit(1);
-			}
-			else
-			{
-				while ((row = mysql_fetch_row(result)) != NULL) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
-				{
-					printf("name is %s\t", row[0]);               //打印当前行的第一列的数据
-					printf("age is %s\t\n", row[1]);              //打印当前行的第二列的数据
-				}
-			}
-			*/
+			fprintf(stderr,"Success!!!!!!\n");
 
 		}
 		
@@ -277,28 +262,28 @@ void searchByName(char* name){
 	strcat(sql_query, name);
 	strcat(sql_query,"'");
 	// print sql_query
-	printf(sql_query);
-	printf("\n");
+	//printf(sql_query);
+	//printf("\n");
 
 	//strcat(sql_query, );
 	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
 
-	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	if (mysql_query(&mysql, sql_query) != 0)       
 	{
-		fprintf(stderr, "插入失败！\n");
+		fprintf(stderr, "insert failure！\n");
 		exit(1);
 	}
 	else
 	{
 		printf("Success!!!!!!\n");
-		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
-			fprintf(stderr, "保存结果集失败！\n");
+			fprintf(stderr, "save result set failure！\n");
 			exit(1);
 		}
 		else
 		{
-			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			while (row = mysql_fetch_row(result)) 
 			{
 				for (int t = 0; t < mysql_num_fields(result); t++)
 				{
@@ -322,28 +307,28 @@ void searchByContentKeyword(char* keyword) {
 	strcat(sql_query, keyword);
 	strcat(sql_query, "%'");
 	// print sql_query
-	printf(sql_query);
-	printf("\n");
+	//printf(sql_query);
+	//printf("\n");
 
 	//strcat(sql_query, );
-	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
+	
 
-	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	if (mysql_query(&mysql, sql_query) != 0)       
 	{
-		fprintf(stderr, "插入失败！\n");
+		fprintf(stderr, "insert failure！\n");
 		exit(1);
 	}
 	else
 	{
 		printf("Success!!!!!!\n");
-		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
-			fprintf(stderr, "保存结果集失败！\n");
+			fprintf(stderr, "save result set failure！\n");
 			exit(1);
 		}
 		else
 		{
-			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			while (row = mysql_fetch_row(result)) 
 			{
 				for (int t = 0; t < mysql_num_fields(result); t++)
 				{
@@ -367,28 +352,28 @@ void searchBySenderKeyword(char* keyword) {
 	strcat(sql_query, keyword);
 	strcat(sql_query, "%'");
 	// print sql_query
-	printf(sql_query);
-	printf("\n");
+	//printf(sql_query);
+	//printf("\n");
 
 	//strcat(sql_query, );
 	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
 
-	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	if (mysql_query(&mysql, sql_query) != 0)       
 	{
-		fprintf(stderr, "插入失败！\n");
+		fprintf(stderr, "insert failure！\n");
 		exit(1);
 	}
 	else
 	{
 		printf("Success!!!!!!\n");
-		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
-			fprintf(stderr, "保存结果集失败！\n");
+			fprintf(stderr, "save result set failure！\n");
 			exit(1);
 		}
 		else
 		{
-			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			while (row = mysql_fetch_row(result)) 
 			{
 				for (int t = 0; t < mysql_num_fields(result); t++)
 				{
@@ -414,28 +399,28 @@ void searchByRoomNumber(int n) {
 	//strcat(sql_query, n);
 	//strcat(sql_query, "'");
 	// print sql_query
-	printf(sql_query);
-	printf("\n");
+	//printf(sql_query);
+	//printf("\n");
 
 	//strcat(sql_query, );
 	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
 
-	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	if (mysql_query(&mysql, sql_query) != 0)       
 	{
-		fprintf(stderr, "插入失败！\n");
+		fprintf(stderr, "insert failure！\n");
 		exit(1);
 	}
 	else
 	{
 		printf("Success!!!!!!\n");
-		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
-			fprintf(stderr, "保存结果集失败！\n");
+			fprintf(stderr, "save result set failure！\n");
 			exit(1);
 		}
 		else
 		{
-			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			while (row = mysql_fetch_row(result)) 
 			{
 				for (int t = 0; t < mysql_num_fields(result); t++)
 				{
@@ -461,28 +446,28 @@ void searchByDate(char* date) {
 	strcat(sql_query, date);
 	strcat(sql_query, "'");
 	// print sql_query
-	printf(sql_query);
-	printf("\n");
+	//printf(sql_query);
+	//printf("\n");
 
 	//strcat(sql_query, );
 	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
 
-	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	if (mysql_query(&mysql, sql_query) != 0)       
 	{
-		fprintf(stderr, "插入失败！\n");
+		fprintf(stderr, "insert failure！\n");
 		exit(1);
 	}
 	else
 	{
 		printf("Success!!!!!!\n");
-		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
-			fprintf(stderr, "保存结果集失败！\n");
+			fprintf(stderr, "save result set failure！\n");
 			exit(1);
 		}
 		else
 		{
-			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			while (row = mysql_fetch_row(result)) 
 			{
 				for (int t = 0; t < mysql_num_fields(result); t++)
 				{
@@ -510,28 +495,28 @@ void searchByDatePeriod(char* startDate, char* endDate) {
 	strcat(sql_query, endDate);
 	strcat(sql_query, "'");
 	// print sql_query
-	printf(sql_query);
-	printf("\n");
+	//printf(sql_query);
+	//printf("\n");
 
 	//strcat(sql_query, );
 	//sql_query = "INSERT INTO messages (sender, room_number, timestamp, content) VALUES ('1', '1', '1', '1')";
 
-	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	if (mysql_query(&mysql, sql_query) != 0)       
 	{
-		fprintf(stderr, "插入失败！\n");
+		fprintf(stderr, "insert failure！\n");
 		return;
 	}
 	else
 	{
 		printf("Success!!!!!!\n");
-		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
-			fprintf(stderr, "保存结果集失败！\n");
+			fprintf(stderr, "save result set failure！\n");
 			return;
 		}
 		else
 		{
-			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			while (row = mysql_fetch_row(result)) 
 			{
 				for (int t = 0; t < mysql_num_fields(result); t++)
 				{
@@ -665,19 +650,7 @@ DWORD WINAPI historySearch(LPVOID param1) {
 			else {
 				printf("please input \"\\history\" to get in history search function!\n");
 			}
-			/*searchByName("Aries");
-			printf("-----------------------------------------------------------------");
-			printf("-----------------------------------------------------------------");
-			searchByDate("2020-12-15");
-			printf("-----------------------------------------------------------------");
-			printf("-----------------------------------------------------------------");
-			searchByRoomNumber(10);
-			printf("-----------------------------------------------------------------");
-			printf("-----------------------------------------------------------------");
-			searchBySenderKeyword("ri");
-			printf("-----------------------------------------------------------------");
-			printf("-----------------------------------------------------------------");
-			searchByContentKeyword("feelings");*/
+			
 		}
 	}
 
@@ -702,7 +675,7 @@ int main(int argc, char** argv) {
 
 	mysql_init(&mysql);
 
-	if ((sql_sock = mysql_real_connect(&mysql, host, user, passwd, db, port, unix_socket, client_flag)) == NULL) //连接MySQL
+	if ((sql_sock = mysql_real_connect(&mysql, host, user, passwd, db, port, unix_socket, client_flag)) == NULL) 
 	{
 		printf("连接失败，原因是: \n");
 		fprintf(stderr, " %s\n", mysql_error(&mysql));
@@ -787,77 +760,13 @@ int main(int argc, char** argv) {
 		threadList[threadCounter].index = threadCounter;
 
 		threadCounter++;
-		//autoTid = CreateThread(NULL, 0, autoSend, &param, 0, NULL);
-		//WaitForSingleObject(sendTid, INFINITE);
-		//CloseHandle(sendTid);
-		//WaitForSingleObject(autoTid, INFINITE);
-		//CloseHandle(autoTid);
-	}
-	/*
-	if (listen(sock, 5) == SOCKET_ERROR) {
-		fprintf(stderr, "listen() failed with error %d\n", WSAGetLastError());
-		WSACleanup();
-		return -1;
-	}
-
-
-	printf("Waiting for the connections ........\n");
-
-	addr_len = sizeof(client_addr);
-	msg_sock = accept(sock, (struct sockaddr*)&client_addr, &addr_len);
-	if (msg_sock == INVALID_SOCKET) {
-		fprintf(stderr, "accept() failed with error %d\n", WSAGetLastError());
-		WSACleanup();
-		return -1;
-	}
-
-	printf("accepted connection from %s, port %d\n",
-		inet_ntoa(client_addr.sin_addr),
-		htons(client_addr.sin_port));
-
-	struct threadParam param;
-	param.socket = msg_sock;
-	param.sockaddr = client_addr;
-	HANDLE sendTid, autoTid;
-	sendTid = CreateThread(NULL, 0, send, &param, 0, NULL);
-	autoTid = CreateThread(NULL, 0, autoSend, &param, 0, NULL);
-	WaitForSingleObject(sendTid, INFINITE);
-	CloseHandle(sendTid);
-	WaitForSingleObject(autoTid, INFINITE);
-	CloseHandle(autoTid);
-	*/
-	/*
-	while (true) {
-		msg_len = recv(msg_sock, szBuff, sizeof(szBuff), 0);
-
-		if (msg_len == SOCKET_ERROR) {
-			fprintf(stderr, "recv() failed with error %d\n", WSAGetLastError());
-			WSACleanup();
-			return -1;
-		}
-
-		if (msg_len == 0) {
-			printf("Client closed connection\n");
-			closesocket(msg_sock);
-			return -1;
-		}
-
-		printf("Bytes Received: %d, message: %s from %s\n", msg_len, szBuff, inet_ntoa(client_addr.sin_addr));
-
 		
-
-		msg_len = send(msg_sock, szBuff, sizeof(szBuff), 0);
-		if (msg_len == 0) {
-			printf("Client closed connection\n");
-			closesocket(msg_sock);
-			return -1;
-		}
-		if (strcmp(szBuff, "exit") == 0)break;
 	}
-	*/
 	
-	//mysql_free_result(result);                                //释放结果集
-	mysql_close(sql_sock);	                                      //关闭连接
+
+	
+	//mysql_free_result(result);                                
+	mysql_close(sql_sock);	                                      
 	system("pause");
 	exit(EXIT_SUCCESS);
 	//EnterCriticalSection();
