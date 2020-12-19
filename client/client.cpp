@@ -49,7 +49,7 @@ int strCharProcess(char *str) {
 		}
 		else
 		{
-			printf("Success!!!!!!\n");
+			//printf("Success!!!!!!\n");
 		}
 
 		strcpy(charTemp, ").)! 001");
@@ -102,7 +102,7 @@ void searchByName(char* name) {
 	}
 	else
 	{
-		printf("Success!!!!!!\n");
+		//printf("Success!!!!!!\n");
 		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
 			fprintf(stderr, "save result set failure！\n");
@@ -149,7 +149,7 @@ void searchByContentKeyword(char* keyword) {
 	}
 	else
 	{
-		printf("Success!!!!!!\n");
+		//printf("Success!!!!!!\n");
 		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
 			fprintf(stderr, "save result set failure！\n");
@@ -196,7 +196,7 @@ void searchBySenderKeyword(char* keyword) {
 	}
 	else
 	{
-		printf("Success!!!!!!\n");
+		//printf("Success!!!!!!\n");
 		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
 			fprintf(stderr, "save result set failure！\n");
@@ -240,7 +240,7 @@ void searchByRoomNumber(int n) {
 	}
 	else
 	{
-		printf("Success!!!!!!\n");
+		//printf("Success!!!!!!\n");
 		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
 			fprintf(stderr, "insert failure！\n");
@@ -289,7 +289,7 @@ void searchByDate(char* date) {
 	}
 	else
 	{
-		printf("Success!!!!!!\n");
+		//printf("Success!!!!!!\n");
 		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
 			fprintf(stderr, "save result set failure！\n");
@@ -331,22 +331,22 @@ void searchByDatePeriod(char* startDate, char* endDate) {
 	//printf("\n");
 
 
-	if (mysql_query(&mysql, sql_query) != 0)       //如果连接成功，则开始查询
+	if (mysql_query(&mysql, sql_query) != 0)       
 	{
-		fprintf(stderr, "插入失败！\n");
+		fprintf(stderr, "insert failure！\n");
 		return;
 	}
 	else
 	{
-		printf("Success!!!!!!\n");
-		if ((result = mysql_store_result(&mysql)) == NULL) //保存查询的结果
+		//printf("Success!!!!!!\n");
+		if ((result = mysql_store_result(&mysql)) == NULL) 
 		{
-			fprintf(stderr, "保存结果集失败！\n");
+			fprintf(stderr, "save result set failure！\n");
 			return;
 		}
 		else
 		{
-			while (row = mysql_fetch_row(result)) //读取结果集中的数据，返回的是下一行。因为保存结果集时，当前的游标在第一行【之前】
+			while (row = mysql_fetch_row(result)) 
 			{
 				for (int t = 0; t < mysql_num_fields(result); t++)
 				{
@@ -586,8 +586,8 @@ DWORD WINAPI send(LPVOID param) {
 				strcat(sql_query, "')");
 
 				// print sql_query
-				printf(sql_query);
-				printf("\n");
+				//printf(sql_query);
+				//printf("\n");
 
 				if (mysql_query(&mysql, sql_query) != 0)       
 				{
@@ -596,7 +596,7 @@ DWORD WINAPI send(LPVOID param) {
 				}
 				else
 				{
-					printf("Success!!!!!!\n");
+					//printf("Success!!!!!!\n");
 				}
 
 			}
@@ -652,7 +652,7 @@ DWORD WINAPI rec(LPVOID param) {
 			string strTemp = szBuff;
 			strTemp = strTemp.substr(25);
 			char* ch = &strTemp[0];
-			puts(ch);
+			//puts(ch);
 			int i = 0;
 			for (i;i<sizeof(ch);i++) {
 				if (ch[i] == ':')
@@ -662,7 +662,7 @@ DWORD WINAPI rec(LPVOID param) {
 			strTemp = ch;
 			strTemp = strTemp.substr(i + 3);
 			ch = &strTemp[0];
-			puts(ch);
+			//puts(ch);
 
 			// INSERT
 
@@ -752,7 +752,7 @@ int main(int argc, char** argv) {
 	}
 	else
 	{
-		fprintf(stderr, "MySQL connect！succeed！\n");
+		//fprintf(stderr, "MySQL connect！succeed！\n");
 	}
 
 
