@@ -617,8 +617,6 @@ DWORD WINAPI send(LPVOID param) {
 				WSACleanup();
 				return -1;
 			}
-			
-				
 		}
 	}
 	closesocket(connect_sock);
