@@ -1,6 +1,8 @@
 #include "username.h"
 #include "ui_username.h"
+#include "serverConnect.h"
 
+using namespace std;
 username::username(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::username)
@@ -24,7 +26,8 @@ void username::on_pushButton_exit_clicked()
 void username::on_pushButton_confirm_clicked()
 {
     QString nickname = ui->lineEdit->text();
-    if(nickname!=""){
+    string nicknameS = nickname.toStdString();
+    if(send(&nicknameS[0],1)==0){
         hide();
         roomHistory *rh = new roomHistory(this);
         connect(rh,SIGNAL(sendsignalun()),this,SLOT(show()));

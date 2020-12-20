@@ -754,8 +754,8 @@ int main(int argc, char** argv) {
 	}
 
 
-	char szBuff[100];
-	int msg_len;
+	//char szBuff[100];
+	//int msg_len;
 	//int addr_len;
 	struct sockaddr_in server_addr;
 	struct hostent* hp;

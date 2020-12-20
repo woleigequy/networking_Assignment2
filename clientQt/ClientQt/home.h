@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "username.h"
+#include "lib_static.h"
 
 
 QT_BEGIN_NAMESPACE
