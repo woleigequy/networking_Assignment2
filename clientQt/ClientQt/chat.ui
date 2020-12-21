@@ -30,21 +30,27 @@
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>85</x>
-      <y>1</y>
+      <x>80</x>
+      <y>0</y>
       <width>1121</width>
       <height>391</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(255,255,255,0.5)</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>80</x>
       <y>390</y>
-      <width>1111</width>
+      <width>1121</width>
       <height>231</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(255,255,255,0.5)</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_send">
@@ -67,13 +73,13 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">background-image: url(:/img/img/pink.png);</string>
    </property>
   </widget>
  </widget>

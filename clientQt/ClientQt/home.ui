@@ -14,7 +14,7 @@
    <string>Home</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:url(:/img/img/19.png)</string>
+   <string notr="true">background-image: url(:/img/img/19.png);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
@@ -77,13 +77,13 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/img/img/w.png);</string>
+    <string notr="true">background-image: url(:/img/img/pink.png);</string>
    </property>
   </widget>
  </widget>

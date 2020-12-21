@@ -19,6 +19,7 @@ history::history(QWidget *parent) :
     connect(parent,SIGNAL(CloseSignal()),this,SLOT(close()));
     ui->dateEdit->setDate(QDate::currentDate());
     ui->dateEdit_endDate->setDate(QDate::currentDate());
+    ui->pushButton_search->setShortcut(QKeySequence::InsertParagraphSeparator);
 }
 
 history::~history()
