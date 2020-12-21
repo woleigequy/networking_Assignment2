@@ -102,11 +102,7 @@ int strCharProcess(char* str, int state) {
 		//state += 2;
 		break;
 	case 3:
-		if (atoi(str) == 0 || atoi(str) == -1) {
-			printf("please input an positive integer as the roomnumber\n");
-			return -1;
-		}
-		roomnumber = atoi(str);
+		//roomnumber = atoi(str);
 		strcpy(charTemp, ").)! 003");
 		strcat(charTemp, str);
 		strcpy(str, charTemp);
@@ -123,9 +119,13 @@ int strCharProcess(char* str, int state) {
 	return 0;
 }
 
-int send(char szBuff[buffSize],int state) {
+int sendToServer(char szBuff[buffSize],int state) {
 	int msg_len;
-			
+	bool flag = true;
+	if (state == 5) {
+		flag = false;
+		state -= 2;
+	}
 			
 			if (state == 4) {
 
@@ -204,9 +204,116 @@ int send(char szBuff[buffSize],int state) {
 					return -1;
 				}
 			}
-
+			if (state != 4&& flag) {
+				char temp[buffSize];
+				recv(connect_sock,temp,buffSize,0);
+				strcpy(temp,"");
+			}
 	return 0;
 }
+
+
+int recFromServer(char* des, char* nickNameDes) {
+	
+		char szBuff[buffSize];
+		int msg_len;
+		msg_len = recv(connect_sock, szBuff, sizeof(szBuff), 0);
+		if (msg_len == SOCKET_ERROR) {
+			fprintf(stderr, "send() failed with error %d\n", WSAGetLastError());
+			closesocket(connect_sock);
+			WSACleanup();
+			return -1;
+		}
+
+		if (msg_len == 0) {
+			printf("server closed connection\n");
+			closesocket(connect_sock);
+			WSACleanup();
+			return -1;
+		}
+		if (strcmp(szBuff, "you can chat now and input \"\\exit\" you can leave the room") == 0)
+			return 0;
+			char nickname[16];
+			string strTemp = szBuff;
+			strTemp = strTemp.substr(25);
+			char* ch = &strTemp[0];
+			//puts(ch);
+			int i = 0;
+			for (i; i < sizeof(ch); i++) {
+				if (ch[i] == ':')
+					break;
+			}
+			strncpy(nickname, ch, i+1);
+			nickname[i+1] = '\0';
+			strTemp = ch;
+			strTemp = strTemp.substr(i + 3);
+			ch = &strTemp[0];
+			strcpy(des, ch);
+			strcpy(nickNameDes, nickname);
+			//puts(ch);
+
+			// INSERT
+
+			char sql_query[999];
+
+			time_t t = time(NULL);
+			struct tm tblock = *localtime(&t);
+
+			// insert sql_query
+			strcpy(sql_query, "INSERT INTO ");
+			strcat(sql_query, nickName);
+			strcat(sql_query, " (sender, room_number, msg_date, msg_time, content) VALUES (");
+			strcat(sql_query, "'");
+			//username
+			strcat(sql_query, nickname);
+			strcat(sql_query, "', '");
+			//room number
+			string strTmp = to_string(roomnumber);
+			strcat(sql_query, &strTmp[0]);
+			strcat(sql_query, "', '");
+			//date
+			strTmp = to_string(tblock.tm_year + 1900);
+			strcat(sql_query, &strTmp[0]);
+			strcat(sql_query, "-");
+			strTmp = to_string(tblock.tm_mon + 1);
+			strcat(sql_query, &strTmp[0]);
+			strcat(sql_query, "-");
+			strTmp = to_string(tblock.tm_mday);
+			strcat(sql_query, &strTmp[0]);
+			strcat(sql_query, "', '");
+			//time
+			strTmp = to_string(tblock.tm_hour);
+			strcat(sql_query, &strTmp[0]);
+			strcat(sql_query, ":");
+			strTmp = to_string(tblock.tm_min);
+			strcat(sql_query, &strTmp[0]);
+			strcat(sql_query, ":");
+			strTmp = to_string(tblock.tm_sec);
+			strcat(sql_query, &strTmp[0]);
+
+			//content
+			strcat(sql_query, "', '");
+			strcat(sql_query, ch);
+			strcat(sql_query, "')");
+
+			// print sql_query
+			//printf(sql_query);
+			//printf("\n");
+
+			if (mysqlRun(sql_query) != 0)
+			{
+				//fprintf(stderr, "insert failure\n");
+				//exit(1);
+				return -1;
+			}
+			
+
+		
+		return 0;
+	
+}
+
+
 
 void closeSocket() {
 	closesocket(connect_sock);
@@ -214,9 +321,21 @@ void closeSocket() {
 
 
 void stateChange(int change) {
-	state = change;
+	//state = change;
 }
 
 char* getNickname() {
 	return nickName;
 }
+
+char* getCurrentTime() {
+	time_t t = time(NULL);
+	struct tm tblock = *localtime(&t);
+	char tchar[26];						// timestamp
+	asctime_s(tchar, sizeof(tchar), &tblock);
+	strncpy(tchar,tchar,25);
+	return tchar;
+}
+
+
+

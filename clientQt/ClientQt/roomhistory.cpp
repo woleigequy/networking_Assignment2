@@ -1,6 +1,8 @@
 #include "roomhistory.h"
 #include "ui_roomhistory.h"
+#include "serverConnect.h"
 
+using namespace std;
 history *his;
 
 roomHistory::roomHistory(QWidget *parent) :
@@ -40,14 +42,17 @@ void roomHistory::on_pushButton_history_clicked()
 void roomHistory::on_pushButton_comfirm_clicked()
 {
     QString roomNumber = ui->lineEdit->text();
+    string roomNumberS = roomNumber.toStdString();
     bool convertCheck;
-    int roomNumberi = roomNumber.toInt(&convertCheck);
+    roomNumber.toInt(&convertCheck);
     if(convertCheck){
-        if(roomNumberi>0){
+        if(sendToServer(&roomNumberS[0],3)==0){
             chat *c = new chat(this);
             hide();
             connect(c,SIGNAL(sendsignal()),this,SLOT(show()));
             c->show();
+            //char reset[] = "0";
+            //int i = sendToServer(reset, 3);
         }else{
             ui->statusbar->showMessage("please input an positive integer as the roomnumber",5000);
         }

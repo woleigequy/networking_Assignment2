@@ -30,6 +30,11 @@
     </item>
     <item>
      <property name="text">
+      <string>search by room number</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>search by nickname keyword</string>
      </property>
     </item>
@@ -119,8 +124,8 @@
      <rect>
       <x>360</x>
       <y>40</y>
-      <width>421</width>
-      <height>141</height>
+      <width>811</width>
+      <height>591</height>
      </rect>
     </property>
    </widget>
@@ -131,7 +136,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

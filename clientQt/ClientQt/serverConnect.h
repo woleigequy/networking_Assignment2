@@ -7,4 +7,8 @@
 int initConnect(char* server_name);
 void stateChange(int change);
 void closeSocket();
-int send(char szBuff[buffSize], int state);
+int sendToServer(char szBuff[buffSize], int state);
+int recFromServer(char* des ,char* nickName);
+void quitRoom();
+char* getNickname();
+char* getCurrentTime();
