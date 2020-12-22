@@ -79,7 +79,7 @@
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/img/img/pink.png);</string>
+    <string notr="true">background-image: url(:/img/img/w.png);</string>
    </property>
   </widget>
  </widget>

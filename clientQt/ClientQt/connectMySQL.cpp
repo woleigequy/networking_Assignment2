@@ -54,7 +54,9 @@ void searchByName(char* name, char* temp) {
 	string resultS = "<table border = '1'><tr><th></th><th>nick name</th><th>room number</th><th>date</th><th>time</th><th>content</th></tr>";
 	string tempS = "";
 	char sql_query[999];
-	char *nickName = getNickname();
+	string nickNameS = getNickname();
+	char nickName[16];
+	strcpy(nickName, &nickNameS[0]);
 	// select sql_query
 	strcpy(sql_query, "SELECT * FROM ");
 	strcat(sql_query, nickName);
@@ -108,7 +110,9 @@ void searchByContentKeyword(char* keyword, char* temp) {
 	string resultS = "<table border = '1'><tr><th></th><th>nick name</th><th>room number</th><th>date</th><th>time</th><th>content</th></tr>";
 	string tempS = "";
 	char sql_query[999];
-	char* nickName = getNickname();
+	string nickNameS = getNickname();
+	char nickName[16];
+	strcpy(nickName, &nickNameS[0]);
 	// select sql_query
 	strcpy(sql_query, "SELECT * FROM ");
 	strcat(sql_query, nickName);
@@ -163,7 +167,9 @@ void searchBySenderKeyword(char* keyword, char* temp) {
 	string resultS = "<table border = '1'><tr><th></th><th>nick name</th><th>room number</th><th>date</th><th>time</th><th>content</th></tr>";
 	string tempS = "";
 	char sql_query[999];
-	char* nickName = getNickname();
+	string nickNameS = getNickname();
+	char nickName[16];
+	strcpy(nickName, &nickNameS[0]);
 	// select sql_query
 	strcpy(sql_query, "SELECT * FROM ");
 	strcat(sql_query, nickName);
@@ -218,7 +224,9 @@ void searchByRoomNumber(int n, char* temp) {
 	string resultS = "<table border = '1'><tr><th></th><th>nick name</th><th>room number</th><th>date</th><th>time</th><th>content</th></tr>";
 	string tempS = "";
 	char sql_query[999];
-	char* nickName = getNickname();
+	string nickNameS = getNickname();
+	char nickName[16];
+	strcpy(nickName, &nickNameS[0]);
 	strcpy(sql_query, "SELECT * FROM ");
 	strcat(sql_query, nickName);
 	strcat(sql_query, " WHERE room_number = ");
@@ -272,7 +280,9 @@ void searchByDate(char* date, char* temp) {
 	printf("Please input the date in format yyyy-mm-dd");
 
 	char sql_query[999];
-	char* nickName = getNickname();
+	string nickNameS = getNickname();
+	char nickName[16];
+	strcpy(nickName, &nickNameS[0]);
 	// select sql_query
 	strcpy(sql_query, "SELECT * FROM ");
 	strcat(sql_query, nickName);
@@ -329,7 +339,9 @@ void searchByDatePeriod(char* startDate, char* endDate, char* temp) {
 	printf("Please input the date in format yyyy-mm-dd");
 
 	char sql_query[999];
-	char* nickName = getNickname();
+	string nickNameS = getNickname();
+	char nickName[16];
+	strcpy(nickName, &nickNameS[0]);
 	// select sql_query
 	strcpy(sql_query, "SELECT * FROM ");
 	strcat(sql_query, nickName);

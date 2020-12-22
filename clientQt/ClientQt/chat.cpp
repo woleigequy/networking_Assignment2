@@ -50,13 +50,9 @@ void chat::on_pushButton_send_clicked()
 {
     QString sendMsg = ui->textEdit->toPlainText();
     string sendMsgS = sendMsg.toStdString();
-    char *sendMsgC = &sendMsgS[0];
-    sendToServer(sendMsgC,4);
-    char tchar[26];
-    strcpy(tchar, getCurrentTime());
-    tchar[24] = '\0';
-    string timeStamp = tchar;
-    ui->textBrowser->insertHtml(QStringLiteral("<br><p align = 'right' style = 'margin:0;'>")+QString(getNickname()) + QStringLiteral("<br>") +QString::fromStdString(timeStamp) + QStringLiteral("</p><p align='right' style = 'margin:0;'>"));
+    int i = sendToServer(&sendMsgS[0],4);
+    string timeStamp = getCurrentTime();
+    ui->textBrowser->insertHtml(QStringLiteral("<br><p align = 'right' style = 'margin:0;'>")+QString::fromStdString(getNickname()) + QStringLiteral("<br>") +QString::fromStdString(timeStamp) + QStringLiteral("</p><p align='right' style = 'margin:0;'>"));
     ui->textBrowser->insertPlainText(sendMsg);
     ui->textBrowser->insertHtml("</p><p align='right' style='margin:0;'></p>");
     ui->textBrowser->verticalScrollBar()->setValue(ui->textBrowser->verticalScrollBar()->maximum());
@@ -80,10 +76,7 @@ void chat::insertMsgBox() {
     {
         return;
     }
-    char tchar[26];
-    strcpy(tchar, getCurrentTime());
-    tchar[24] = '\0';
-    string timeStamp = tchar;
+    string timeStamp = getCurrentTime();
     ui->textBrowser->insertHtml(QStringLiteral("<br><p align = 'left' style = 'margin:0;'>") + QString(nickNameRec)+ QStringLiteral("<br>") + QString::fromStdString(timeStamp) + QStringLiteral("</p><p align='left' style = 'margin:0;'>"));
     ui->textBrowser->insertPlainText(QString(szBuff));
     ui->textBrowser->insertHtml("</p><p align='left' style='margin:0;'></p>");

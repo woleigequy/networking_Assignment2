@@ -119,8 +119,8 @@ int strCharProcess(char* str, int state) {
 	return 0;
 }
 
-int sendToServer(char szBuff[buffSize],int state) {
-	int msg_len;
+int sendToServer(char *szBuff,int state) {
+	int msg_len = 0;
 	bool flag = true;
 	if (state == 5) {
 		flag = false;
@@ -324,17 +324,19 @@ void stateChange(int change) {
 	//state = change;
 }
 
-char* getNickname() {
-	return nickName;
+string getNickname() {
+	string result = nickName;
+	return result;
 }
 
-char* getCurrentTime() {
+string getCurrentTime() {
 	time_t t = time(NULL);
 	struct tm tblock = *localtime(&t);
 	char tchar[26];						// timestamp
 	asctime_s(tchar, sizeof(tchar), &tblock);
 	strncpy(tchar,tchar,25);
-	return tchar;
+	string tcharS = tchar;
+	return tcharS;
 }
 
 
