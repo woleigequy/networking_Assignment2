@@ -27,7 +27,7 @@ void username::on_pushButton_confirm_clicked()
 {
     QString nickname = ui->lineEdit->text();
     string nicknameS = nickname.toStdString();
-    if(sendToServer(&nicknameS[0],1)==0){
+    if(sendToServer(nicknameS,1)==0){
         hide();
         roomHistory *rh = new roomHistory(this);
         connect(rh,SIGNAL(sendsignalun()),this,SLOT(show()));

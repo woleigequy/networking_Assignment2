@@ -119,7 +119,9 @@ int strCharProcess(char* str, int state) {
 	return 0;
 }
 
-int sendToServer(char *szBuff,int state) {
+int sendToServer(string szBuffS,int state) {
+	char szBuff[buffSize];
+	strcpy_s(szBuff,&szBuffS[0]);
 	int msg_len = 0;
 	bool flag = true;
 	if (state == 5) {
@@ -233,23 +235,24 @@ int recFromServer(char* des, char* nickNameDes) {
 		}
 		if (strcmp(szBuff, "you can chat now and input \"\\exit\" you can leave the room") == 0)
 			return 0;
-			char nickname[16];
+			string nickname;
 			string strTemp = szBuff;
 			strTemp = strTemp.substr(25);
 			char* ch = &strTemp[0];
 			//puts(ch);
 			int i = 0;
-			for (i; i < sizeof(ch); i++) {
-				if (ch[i] == ':')
+			for (i; i < strlen(ch); i++) {
+				if (ch[i] == 58)
 					break;
 			}
-			strncpy(nickname, ch, i+1);
-			nickname[i+1] = '\0';
+			nickname = strTemp.substr(0,i);
+			//strncpy(nickname, ch, i);
+			//nickname[i+1] = '\0';
 			strTemp = ch;
-			strTemp = strTemp.substr(i + 3);
+			strTemp = strTemp.substr(i+2);
 			ch = &strTemp[0];
 			strcpy(des, ch);
-			strcpy(nickNameDes, nickname);
+			strcpy(nickNameDes, &nickname[0]);
 			//puts(ch);
 
 			// INSERT
@@ -265,7 +268,7 @@ int recFromServer(char* des, char* nickNameDes) {
 			strcat(sql_query, " (sender, room_number, msg_date, msg_time, content) VALUES (");
 			strcat(sql_query, "'");
 			//username
-			strcat(sql_query, nickname);
+			strcat(sql_query, &nickname[0]);
 			strcat(sql_query, "', '");
 			//room number
 			string strTmp = to_string(roomnumber);

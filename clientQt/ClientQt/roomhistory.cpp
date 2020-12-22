@@ -46,7 +46,7 @@ void roomHistory::on_pushButton_comfirm_clicked()
     bool convertCheck;
     roomNumber.toInt(&convertCheck);
     if(convertCheck){
-        if(sendToServer(&roomNumberS[0],3)==0){
+        if(sendToServer(roomNumberS,3)==0){
             chat *c = new chat(this);
             hide();
             connect(c,SIGNAL(sendsignal()),this,SLOT(show()));
