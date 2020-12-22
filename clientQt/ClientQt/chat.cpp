@@ -56,9 +56,9 @@ void chat::on_pushButton_send_clicked()
     string timeStamp = getCurrentTime();
     ui->textBrowser->moveCursor(QTextCursor::End);
 
-    ui->textBrowser->insertHtml(QStringLiteral("<br><p align = 'right' style = 'margin:0;'>")+QString::fromStdString(getNickname()) + QStringLiteral("<br>") +QString::fromStdString(timeStamp) + QStringLiteral("</p><p align='right' style = 'margin:0;'>"));
+    ui->textBrowser->insertHtml(QStringLiteral("<br><b><p align = 'right' style = 'margin:0; font-family:SimHei;'>")+QString::fromStdString(getNickname()) + QStringLiteral("</b></p><p align='right' style = 'margin:0; font-family:Century Gothic;'>") +QString::fromStdString(timeStamp) + QStringLiteral("</p><p align='right' style = 'margin:0; font-family:SimHei;'>"));
     ui->textBrowser->insertPlainText(sendMsg);
-    ui->textBrowser->insertHtml("</p><p align='right' style='margin:0;'></p>");
+    ui->textBrowser->insertHtml("</p>");
     ui->textBrowser->verticalScrollBar()->setValue(ui->textBrowser->verticalScrollBar()->maximum());
     ui->textEdit->clear();
 }
@@ -83,9 +83,9 @@ void chat::insertMsgBox() {
     }
     string timeStamp = getCurrentTime();
     ui->textBrowser->moveCursor(QTextCursor::End);
-    ui->textBrowser->insertHtml(QStringLiteral("<br><p align = 'left' style = 'margin:0;'>") + QString(nickNameRec)+ QStringLiteral("<br>") + QString::fromStdString(timeStamp) + QStringLiteral("</p><p align='left' style = 'margin:0;'>"));
+    ui->textBrowser->insertHtml(QStringLiteral("<br><b><p align = 'left' style = 'margin:0; font-family:SimHei;'>") + QString(nickNameRec)+ QStringLiteral("</b></p><p align = 'left' style = 'margin:0; font-family:SimHei;'>") + QString::fromStdString(timeStamp) + QStringLiteral("</p><p align='left' style = 'margin:0; font-family:SimHei;'>"));
     ui->textBrowser->insertPlainText(QString(szBuff));
-    ui->textBrowser->insertHtml("</p><p align='left' style='margin:0;'></p>");
+    ui->textBrowser->insertHtml("</p>");
     ui->textBrowser->verticalScrollBar()->setValue(ui->textBrowser->verticalScrollBar()->maximum());
 }
 

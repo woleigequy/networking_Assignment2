@@ -39,20 +39,26 @@ public:
     {
         if (username->objectName().isEmpty())
             username->setObjectName(QString::fromUtf8("username"));
-        username->resize(1200, 700);
+        username->resize(571, 422);
+        username->setStyleSheet(QString::fromUtf8("background-color: 245, 245, 245;"));
         centralwidget = new QWidget(username);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setStyleSheet(QString::fromUtf8("background-image: url(:/img/img/w.png);"));
         pushButton_exit = new QPushButton(centralwidget);
         pushButton_exit->setObjectName(QString::fromUtf8("pushButton_exit"));
         pushButton_exit->setGeometry(QRect(0, 0, 80, 20));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(170, 120, 164, 24));
+        layoutWidget->setGeometry(QRect(200, 170, 164, 24));
         formLayout = new QFormLayout(layoutWidget);
         formLayout->setObjectName(QString::fromUtf8("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
         label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font.setPointSize(12);
+        label->setFont(font);
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label);
 
@@ -63,14 +69,18 @@ public:
 
         pushButton_confirm = new QPushButton(centralwidget);
         pushButton_confirm->setObjectName(QString::fromUtf8("pushButton_confirm"));
-        pushButton_confirm->setGeometry(QRect(210, 160, 80, 20));
+        pushButton_confirm->setGeometry(QRect(240, 210, 80, 20));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        pushButton_confirm->setFont(font1);
         username->setCentralWidget(centralwidget);
         menubar = new QMenuBar(username);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1200, 21));
+        menubar->setGeometry(QRect(0, 0, 571, 21));
         username->setMenuBar(menubar);
         statusbar = new QStatusBar(username);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        statusbar->setStyleSheet(QString::fromUtf8("background-image: url(:/img/img/w.png);"));
         username->setStatusBar(statusbar);
 
         retranslateUi(username);

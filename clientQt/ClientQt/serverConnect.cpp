@@ -102,7 +102,7 @@ int strCharProcess(char* str, int state) {
 		//state += 2;
 		break;
 	case 3:
-		//roomnumber = atoi(str);
+		roomnumber = atoi(str);
 		strcpy(charTemp, ").)! 003");
 		strcat(charTemp, str);
 		strcpy(str, charTemp);

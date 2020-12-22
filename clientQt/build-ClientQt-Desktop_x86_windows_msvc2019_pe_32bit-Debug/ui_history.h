@@ -42,10 +42,13 @@ public:
     {
         if (history->objectName().isEmpty())
             history->setObjectName(QString::fromUtf8("history"));
-        history->resize(1200, 700);
+        history->resize(1200, 664);
+        history->setStyleSheet(QString::fromUtf8("background-color: 245, 245, 245;"));
         centralwidget = new QWidget(history);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setStyleSheet(QString::fromUtf8("background-image: url(:/img/img/w.png);"));
         comboBox = new QComboBox(centralwidget);
+        comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->addItem(QString());
@@ -53,12 +56,20 @@ public:
         comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setGeometry(QRect(70, 40, 281, 31));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Candara"));
+        font.setPointSize(11);
+        comboBox->setFont(font);
         lineEdit = new QLineEdit(centralwidget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         lineEdit->setGeometry(QRect(70, 80, 281, 20));
         pushButton_search = new QPushButton(centralwidget);
         pushButton_search->setObjectName(QString::fromUtf8("pushButton_search"));
         pushButton_search->setGeometry(QRect(70, 140, 80, 20));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Candara"));
+        font1.setPointSize(10);
+        pushButton_search->setFont(font1);
         dateEdit = new QDateEdit(centralwidget);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
         dateEdit->setGeometry(QRect(70, 110, 110, 22));
@@ -68,14 +79,19 @@ public:
         label_to = new QLabel(centralwidget);
         label_to->setObjectName(QString::fromUtf8("label_to"));
         label_to->setGeometry(QRect(180, 110, 31, 21));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Adobe Devanagari"));
-        font.setPointSize(16);
-        label_to->setFont(font);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Adobe Devanagari"));
+        font2.setPointSize(16);
+        label_to->setFont(font2);
         label_to->setAlignment(Qt::AlignCenter);
         textBrowser = new QTextBrowser(centralwidget);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(360, 40, 421, 141));
+        textBrowser->setGeometry(QRect(360, 40, 811, 591));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font3.setPointSize(10);
+        textBrowser->setFont(font3);
+        textBrowser->setStyleSheet(QString::fromUtf8("background-color:rgba(255,255,255,0.5)"));
         history->setCentralWidget(centralwidget);
         menubar = new QMenuBar(history);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -83,6 +99,7 @@ public:
         history->setMenuBar(menubar);
         statusbar = new QStatusBar(history);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        statusbar->setStyleSheet(QString::fromUtf8("background-image: url(:/img/img/w.png);"));
         history->setStatusBar(statusbar);
 
         retranslateUi(history);
@@ -93,13 +110,14 @@ public:
     void retranslateUi(QMainWindow *history)
     {
         history->setWindowTitle(QCoreApplication::translate("history", "MainWindow", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("history", "search by nickname", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("history", "search by nickname keyword", nullptr));
-        comboBox->setItemText(2, QCoreApplication::translate("history", "search by content keyword", nullptr));
-        comboBox->setItemText(3, QCoreApplication::translate("history", "search by date", nullptr));
-        comboBox->setItemText(4, QCoreApplication::translate("history", "search by date period", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("history", "Search by nickname", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("history", "Search by room number", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("history", "Search by nickname keyword", nullptr));
+        comboBox->setItemText(3, QCoreApplication::translate("history", "Search by content keyword", nullptr));
+        comboBox->setItemText(4, QCoreApplication::translate("history", "Search by date", nullptr));
+        comboBox->setItemText(5, QCoreApplication::translate("history", "Search by date period", nullptr));
 
-        pushButton_search->setText(QCoreApplication::translate("history", "search", nullptr));
+        pushButton_search->setText(QCoreApplication::translate("history", "Search", nullptr));
         label_to->setText(QCoreApplication::translate("history", "~", nullptr));
     } // retranslateUi
 

@@ -36,29 +36,40 @@ public:
     {
         if (chat->objectName().isEmpty())
             chat->setObjectName(QString::fromUtf8("chat"));
-        chat->resize(1200, 700);
+        chat->resize(1138, 709);
+        chat->setStyleSheet(QString::fromUtf8("background-color: 245, 245, 245;\n"
+"background-image: url(:/img/img/pink.png);"));
         centralwidget = new QWidget(chat);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setStyleSheet(QString::fromUtf8("background-image: url(:/img/img/w.png);"));
         pushButton_quit = new QPushButton(centralwidget);
         pushButton_quit->setObjectName(QString::fromUtf8("pushButton_quit"));
-        pushButton_quit->setGeometry(QRect(0, 0, 80, 20));
+        pushButton_quit->setGeometry(QRect(10, 10, 80, 20));
+        QFont font;
+        font.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font.setPointSize(10);
+        pushButton_quit->setFont(font);
+        pushButton_quit->setStyleSheet(QString::fromUtf8("pushButton_quit->setStyleSheet(\"border:2px groove gray;border-radius:20px;padding:2px 4px;\");"));
         textBrowser = new QTextBrowser(centralwidget);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(85, 1, 1121, 391));
+        textBrowser->setGeometry(QRect(10, 30, 1121, 391));
+        textBrowser->setStyleSheet(QString::fromUtf8("background-image: url(:/img/img/w.png);"));
         textEdit = new QTextEdit(centralwidget);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(90, 390, 1111, 231));
+        textEdit->setGeometry(QRect(10, 420, 1121, 201));
+        textEdit->setStyleSheet(QString::fromUtf8("background-color:rgba(255,255,255,0.5)"));
         pushButton_send = new QPushButton(centralwidget);
         pushButton_send->setObjectName(QString::fromUtf8("pushButton_send"));
-        pushButton_send->setGeometry(QRect(1110, 630, 80, 20));
+        pushButton_send->setGeometry(QRect(1040, 630, 80, 20));
+        pushButton_send->setFont(font);
         chat->setCentralWidget(centralwidget);
         menubar = new QMenuBar(chat);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1200, 21));
+        menubar->setGeometry(QRect(0, 0, 1138, 21));
         chat->setMenuBar(menubar);
         statusbar = new QStatusBar(chat);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        statusbar->setStyleSheet(QString::fromUtf8(""));
+        statusbar->setStyleSheet(QString::fromUtf8("background-image: url(:/img/img/w.png);"));
         chat->setStatusBar(statusbar);
 
         retranslateUi(chat);
@@ -69,8 +80,8 @@ public:
     void retranslateUi(QMainWindow *chat)
     {
         chat->setWindowTitle(QCoreApplication::translate("chat", "MainWindow", nullptr));
-        pushButton_quit->setText(QCoreApplication::translate("chat", "quit", nullptr));
-        pushButton_send->setText(QCoreApplication::translate("chat", "send", nullptr));
+        pushButton_quit->setText(QCoreApplication::translate("chat", "Quit", nullptr));
+        pushButton_send->setText(QCoreApplication::translate("chat", "Send", nullptr));
     } // retranslateUi
 
 };

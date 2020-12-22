@@ -7,13 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>700</height>
+    <height>664</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: 245, 245, 245;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/img/img/w.png);</string>
+   </property>
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
@@ -23,34 +29,40 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Candara</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <item>
      <property name="text">
-      <string>search by nickname</string>
+      <string>Search by nickname</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>search by room number</string>
+      <string>Search by room number</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>search by nickname keyword</string>
+      <string>Search by nickname keyword</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>search by content keyword</string>
+      <string>Search by content keyword</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>search by date</string>
+      <string>Search by date</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>search by date period</string>
+      <string>Search by date period</string>
      </property>
     </item>
    </widget>
@@ -73,8 +85,14 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Candara</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>search</string>
+     <string>Search</string>
     </property>
    </widget>
    <widget class="QDateEdit" name="dateEdit">
@@ -128,6 +146,12 @@
       <height>591</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>黑体</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color:rgba(255,255,255,0.5)</string>
     </property>
@@ -139,7 +163,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

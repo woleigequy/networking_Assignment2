@@ -316,6 +316,10 @@ release\moc_chat.cpp: ..\ClientQt\chat.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qtouchdevice.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qtabwidget.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qicon.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
 		release\moc_predefs.h \
 		D:\Qt\5.15.2\msvc2019\bin\moc.exe
 	D:\Qt\5.15.2\msvc2019\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include H:/networking/test/clientQt/build-ClientQt-Desktop_x86_windows_msvc2019_pe_32bit-Debug/release/moc_predefs.h -ID:/Qt/5.15.2/msvc2019/mkspecs/win32-msvc -IH:/networking/test/clientQt/ClientQt -ID:/Qt/5.15.2/msvc2019/include -ID:/Qt/5.15.2/msvc2019/include/QtWidgets -ID:/Qt/5.15.2/msvc2019/include/QtGui -ID:/Qt/5.15.2/msvc2019/include/QtANGLE -ID:/Qt/5.15.2/msvc2019/include/QtCore -I. -I"D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"D:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"D:\Windows Kits\10\include\10.0.19041.0\shared" -I"D:\Windows Kits\10\include\10.0.19041.0\um" -I"D:\Windows Kits\10\include\10.0.19041.0\winrt" -I"D:\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\ClientQt\chat.h -o release\moc_chat.cpp
@@ -542,6 +546,11 @@ release\moc_home.cpp: ..\ClientQt\home.h \
 		..\ClientQt\roomhistory.h \
 		..\ClientQt\history.h \
 		..\ClientQt\chat.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
+		..\ClientQt\lib_static.h \
 		release\moc_predefs.h \
 		D:\Qt\5.15.2\msvc2019\bin\moc.exe
 	D:\Qt\5.15.2\msvc2019\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include H:/networking/test/clientQt/build-ClientQt-Desktop_x86_windows_msvc2019_pe_32bit-Debug/release/moc_predefs.h -ID:/Qt/5.15.2/msvc2019/mkspecs/win32-msvc -IH:/networking/test/clientQt/ClientQt -ID:/Qt/5.15.2/msvc2019/include -ID:/Qt/5.15.2/msvc2019/include/QtWidgets -ID:/Qt/5.15.2/msvc2019/include/QtGui -ID:/Qt/5.15.2/msvc2019/include/QtANGLE -ID:/Qt/5.15.2/msvc2019/include/QtCore -I. -I"D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"D:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"D:\Windows Kits\10\include\10.0.19041.0\shared" -I"D:\Windows Kits\10\include\10.0.19041.0\um" -I"D:\Windows Kits\10\include\10.0.19041.0\winrt" -I"D:\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\ClientQt\home.h -o release\moc_home.cpp
@@ -655,6 +664,10 @@ release\moc_roomhistory.cpp: ..\ClientQt\roomhistory.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qicon.h \
 		..\ClientQt\history.h \
 		..\ClientQt\chat.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
 		release\moc_predefs.h \
 		D:\Qt\5.15.2\msvc2019\bin\moc.exe
 	D:\Qt\5.15.2\msvc2019\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include H:/networking/test/clientQt/build-ClientQt-Desktop_x86_windows_msvc2019_pe_32bit-Debug/release/moc_predefs.h -ID:/Qt/5.15.2/msvc2019/mkspecs/win32-msvc -IH:/networking/test/clientQt/ClientQt -ID:/Qt/5.15.2/msvc2019/include -ID:/Qt/5.15.2/msvc2019/include/QtWidgets -ID:/Qt/5.15.2/msvc2019/include/QtGui -ID:/Qt/5.15.2/msvc2019/include/QtANGLE -ID:/Qt/5.15.2/msvc2019/include/QtCore -I. -I"D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"D:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"D:\Windows Kits\10\include\10.0.19041.0\shared" -I"D:\Windows Kits\10\include\10.0.19041.0\um" -I"D:\Windows Kits\10\include\10.0.19041.0\winrt" -I"D:\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\ClientQt\roomhistory.h -o release\moc_roomhistory.cpp
@@ -769,6 +782,10 @@ release\moc_username.cpp: ..\ClientQt\username.h \
 		..\ClientQt\roomhistory.h \
 		..\ClientQt\history.h \
 		..\ClientQt\chat.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
 		release\moc_predefs.h \
 		D:\Qt\5.15.2\msvc2019\bin\moc.exe
 	D:\Qt\5.15.2\msvc2019\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include H:/networking/test/clientQt/build-ClientQt-Desktop_x86_windows_msvc2019_pe_32bit-Debug/release/moc_predefs.h -ID:/Qt/5.15.2/msvc2019/mkspecs/win32-msvc -IH:/networking/test/clientQt/ClientQt -ID:/Qt/5.15.2/msvc2019/include -ID:/Qt/5.15.2/msvc2019/include/QtWidgets -ID:/Qt/5.15.2/msvc2019/include/QtGui -ID:/Qt/5.15.2/msvc2019/include/QtANGLE -ID:/Qt/5.15.2/msvc2019/include/QtCore -I. -I"D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"D:\Windows Kits\10\include\10.0.19041.0\ucrt" -I"D:\Windows Kits\10\include\10.0.19041.0\shared" -I"D:\Windows Kits\10\include\10.0.19041.0\um" -I"D:\Windows Kits\10\include\10.0.19041.0\winrt" -I"D:\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\ClientQt\username.h -o release\moc_username.cpp
@@ -919,7 +936,11 @@ release\chat.obj: ..\ClientQt\chat.cpp ..\ClientQt\chat.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qtouchdevice.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qtabwidget.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qicon.h \
-		ui_chat.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
+		..\ClientQt\ui_chat.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QVariant \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QApplication \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qapplication.h \
@@ -949,7 +970,18 @@ release\chat.obj: ..\ClientQt\chat.cpp ..\ClientQt\chat.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qtextformat.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qpen.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QTextEdit \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget
+		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget \
+		..\ClientQt\serverConnect.h \
+		..\ClientQt\home.h \
+		..\ClientQt\username.h \
+		..\ClientQt\roomhistory.h \
+		..\ClientQt\history.h \
+		..\ClientQt\lib_static.h \
+		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QScrollBar \
+		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qscrollbar.h \
+		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qabstractslider.h \
+		D:\Qt\5.15.2\msvc2019\include\QtGui\QtextCursor \
+		D:\Qt\5.15.2\msvc2019\include\QtGui\Qcursor
 
 release\history.obj: ..\ClientQt\history.cpp ..\ClientQt\history.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QMainWindow \
@@ -1058,7 +1090,7 @@ release\history.obj: ..\ClientQt\history.cpp ..\ClientQt\history.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qtouchdevice.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qtabwidget.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qicon.h \
-		ui_history.h \
+		..\ClientQt\ui_history.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QVariant \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QApplication \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qapplication.h \
@@ -1108,7 +1140,19 @@ release\history.obj: ..\ClientQt\history.cpp ..\ClientQt\history.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qtextedit.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qabstractscrollarea.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qtextdocument.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget
+		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget \
+		..\ClientQt\connectMySQL.h \
+		..\ClientQt\home.h \
+		..\ClientQt\username.h \
+		..\ClientQt\roomhistory.h \
+		..\ClientQt\chat.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
+		..\ClientQt\lib_static.h \
+		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QScrollBar \
+		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qscrollbar.h
 
 release\main.obj: ..\ClientQt\main.cpp ..\ClientQt\home.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QMainWindow \
@@ -1221,6 +1265,11 @@ release\main.obj: ..\ClientQt\main.cpp ..\ClientQt\home.h \
 		..\ClientQt\roomhistory.h \
 		..\ClientQt\history.h \
 		..\ClientQt\chat.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
+		..\ClientQt\lib_static.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QApplication \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qapplication.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\qcoreapplication.h \
@@ -1340,7 +1389,12 @@ release\home.obj: ..\ClientQt\home.cpp ..\ClientQt\home.h \
 		..\ClientQt\roomhistory.h \
 		..\ClientQt\history.h \
 		..\ClientQt\chat.h \
-		ui_home.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
+		..\ClientQt\lib_static.h \
+		..\ClientQt\ui_home.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QVariant \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QApplication \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qapplication.h \
@@ -1375,7 +1429,9 @@ release\home.obj: ..\ClientQt\home.cpp ..\ClientQt\home.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qstatusbar.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QVBoxLayout \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget \
-		D:\Qt\5.15.2\msvc2019\include\QtGui\QPixmap
+		D:\Qt\5.15.2\msvc2019\include\QtGui\QPixmap \
+		..\ClientQt\connectMySQL.h \
+		..\ClientQt\serverConnect.h
 
 release\roomhistory.obj: ..\ClientQt\roomhistory.cpp ..\ClientQt\roomhistory.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QMainWindow \
@@ -1486,7 +1542,11 @@ release\roomhistory.obj: ..\ClientQt\roomhistory.cpp ..\ClientQt\roomhistory.h \
 		D:\Qt\5.15.2\msvc2019\include\QtGui\qicon.h \
 		..\ClientQt\history.h \
 		..\ClientQt\chat.h \
-		ui_roomhistory.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
+		..\ClientQt\ui_roomhistory.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QVariant \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QApplication \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qapplication.h \
@@ -1522,7 +1582,11 @@ release\roomhistory.obj: ..\ClientQt\roomhistory.cpp ..\ClientQt\roomhistory.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QStatusBar \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qstatusbar.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget
+		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget \
+		..\ClientQt\serverConnect.h \
+		..\ClientQt\home.h \
+		..\ClientQt\username.h \
+		..\ClientQt\lib_static.h
 
 release\username.obj: ..\ClientQt\username.cpp ..\ClientQt\username.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QMainWindow \
@@ -1634,7 +1698,11 @@ release\username.obj: ..\ClientQt\username.cpp ..\ClientQt\username.h \
 		..\ClientQt\roomhistory.h \
 		..\ClientQt\history.h \
 		..\ClientQt\chat.h \
-		ui_username.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\QThread \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qthread.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qdeadlinetimer.h \
+		D:\Qt\5.15.2\msvc2019\include\QtCore\qelapsedtimer.h \
+		..\ClientQt\ui_username.h \
 		D:\Qt\5.15.2\msvc2019\include\QtCore\QVariant \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QApplication \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qapplication.h \
@@ -1669,7 +1737,10 @@ release\username.obj: ..\ClientQt\username.cpp ..\ClientQt\username.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qabstractbutton.h \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QStatusBar \
 		D:\Qt\5.15.2\msvc2019\include\QtWidgets\qstatusbar.h \
-		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget
+		D:\Qt\5.15.2\msvc2019\include\QtWidgets\QWidget \
+		..\ClientQt\serverConnect.h \
+		..\ClientQt\home.h \
+		..\ClientQt\lib_static.h
 
 release\qrc_resource.obj: release\qrc_resource.cpp 
 

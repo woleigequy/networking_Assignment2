@@ -6,34 +6,46 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>700</height>
+    <width>520</width>
+    <height>449</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Home</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/img/img/19.png);</string>
+   <string notr="true">background-color: 245, 245, 245;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/img/img/w.png);</string>
+   </property>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>160</y>
+      <x>80</x>
+      <y>90</y>
       <width>361</width>
-      <height>161</height>
+      <height>231</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <widget class="QLabel" name="label_home">
+       <property name="font">
+        <font>
+         <family>黑体</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
        <property name="layoutDirection">
         <enum>Qt::LeftToRight</enum>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/img/img/w.png);</string>
+       </property>
        <property name="text">
-        <string>home page</string>
+        <string>Home Page</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -46,20 +58,53 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_address">
+           <property name="font">
+            <font>
+             <family>黑体</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-image: url(:/img/img/w.png);</string>
+           </property>
            <property name="text">
             <string>Hostname/IP</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_address"/>
+          <widget class="QLineEdit" name="lineEdit_address">
+           <property name="styleSheet">
+            <string notr="true">background-image: url(:/img/img/w.png);</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
        <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButton">
+         <property name="font">
+          <font>
+           <family>黑体</family>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true">background-color:rgb(65, 65, 65);color:white;</string>
          </property>
          <property name="text">
           <string>Connect</string>
@@ -76,8 +121,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
-     <height>22</height>
+     <width>520</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
