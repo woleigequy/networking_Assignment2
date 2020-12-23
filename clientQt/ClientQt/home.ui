@@ -10,11 +10,27 @@
     <height>449</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>520</width>
+    <height>449</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>520</width>
+    <height>449</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Home</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: 245, 245, 245;</string>
+   <string notr="true">background-color: 245, 245, 245;
+background-image: url(:/img/img/19.png);
+background-repeat: no-repeat;
+background-position: 50% 50%;
+background-size: contain;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -26,7 +42,7 @@
       <x>80</x>
       <y>90</y>
       <width>361</width>
-      <height>231</height>
+      <height>285</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
