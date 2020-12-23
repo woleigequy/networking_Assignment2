@@ -347,7 +347,7 @@ void searchByDatePeriod(char* startDate, char* endDate, char* temp) {
 	strcat(sql_query, nickName);
 	strcat(sql_query, " WHERE msg_date >= '");
 	strcat(sql_query, startDate);
-	strcat(sql_query, " and msg_date <= ");
+	strcat(sql_query, "' and msg_date <= '");
 	strcat(sql_query, endDate);
 	strcat(sql_query, "'");
 	// print sql_query
